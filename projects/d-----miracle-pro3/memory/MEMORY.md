@@ -1,5 +1,22 @@
 # 项目记忆
 
+## 线上/线下经纪人分类逻辑
+
+数据仪表盘 `dashboardService.js` 的 `getCat()` 函数定义了线上/线下判断规则，多个模块复用此逻辑：
+
+- **线上经纪人**：廖雨婷、宋帅、付百坤、赖晗纯、袁韵滢、陈子濠
+- **线下经纪人**：朱江源、丁友发、苏梓豪、陈庆丰、肖杰阳、何依萌
+- **判断优先级**：先看项目名是否含"线上"/"线下"/"二创"关键词，再看经纪人名单
+- **复用位置**：
+  - `server/services/business/dashboardService.js` — getCat() 原始定义
+  - `src/views/EditingWorkflowView.jsx` — ProductEditorStats 组件，斗地主按经纪人拆分线上/线下
+- **新增主播/经纪人时**：只要账号数据 (business_data type=accounts) 里填了经纪人 (agent 字段)，系统自动识别线上/线下
+
+## 账号数据来源
+
+剪辑工作台的主播账号来自 `business_data` 表 `type='accounts'`（经营数据板块），不是 `anchors` 表。
+字段包括：accountName（账号昵称）、anchorName（主播名）、agent（经纪人）、product（项目）等。
+
 ## 高频踩坑点
 
 ### createPortal 弹窗渲染（反复出现）
