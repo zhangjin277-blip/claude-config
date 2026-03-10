@@ -1,0 +1,21 @@
+# === 只同步核心配置，其他全部忽略 ===
+
+# 忽略所有
+*
+
+# 保留 gitignore 和全局指令
+!.gitignore
+!CLAUDE.md
+
+# 保留 skills 目录
+!skills/
+!skills/**
+
+# 保留项目记忆（需要逐层展开目录）
+!projects/
+!projects/*/
+!projects/*/memory/
+!projects/*/memory/**
+
+# 敏感文件绝对不提交
+.credentials.json
