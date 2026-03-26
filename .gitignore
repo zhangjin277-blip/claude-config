@@ -7,6 +7,10 @@
 !.gitignore
 !CLAUDE.md
 
+# 保留 agents 目录
+!agents/
+!agents/**
+
 # 保留 skills 目录
 !skills/
 !skills/**
